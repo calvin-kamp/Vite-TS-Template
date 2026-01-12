@@ -1,0 +1,15 @@
+@use '@styles/abstracts/tokens.layout' as *;
+@use 'sass:math';
+@use 'sass:meta';
+
+@function get-rem($px, $base: 16px) {
+    @return math.div($px, $base) * 1rem;
+}
+
+@function grid-size($size) {
+    @if $size == null or meta.type-of($size) != 'number' or $size <= 0 or $size > $grid-columns {
+        @error "Invalid size: '$size'. It must be a number between 1 and #{$grid-columns}.";
+    }
+
+    @return math.percentage(math.div($size, $grid-columns));
+}
