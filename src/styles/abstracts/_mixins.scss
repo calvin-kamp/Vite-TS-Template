@@ -97,3 +97,15 @@
         }
     }
 }
+
+@mixin font-size($mobile, $tablet, $desktop) {
+    font-size: $mobile;
+
+    @include breakpoint(md) {
+        font-size: $tablet;
+    }
+
+    @include breakpoint(lg) {
+        font-size: $desktop;
+    }
+}
